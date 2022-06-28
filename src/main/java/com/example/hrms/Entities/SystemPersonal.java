@@ -30,7 +30,7 @@ public class SystemPersonal implements Serializable {
 
     @OneToOne
     @JoinColumn(name="user_id")
-    public Users user;
+    public User user;
 
 
 }

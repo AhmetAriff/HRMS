@@ -1,13 +1,17 @@
 package com.example.hrms.Service.Services;
 
-import com.example.hrms.Dto.EmployersDto;
-import com.example.hrms.Dto.SystemPersonalDto;
+
+
+import com.example.hrms.Dtos.PersonalDto;
+import com.example.hrms.Entities.SystemPersonal;
+import com.example.hrms.core.Utilities.Results.Result;
+
 
 public interface SystemPersonalService {
 
-    void addPersonal(SystemPersonalDto systemPersonalDto);
+    Result addPersonal(PersonalDto personalDto);
 
-    void deletePersonal(SystemPersonalDto systemPersonalDto);
+    void deletePersonal(SystemPersonal systemPersonal);
 
-    void updatePersonal(SystemPersonalDto systemPersonalDto);
+    void updatePersonal(SystemPersonal systemPersonal);
 }

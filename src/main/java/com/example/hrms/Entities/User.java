@@ -1,11 +1,9 @@
 package com.example.hrms.Entities;
 
 import lombok.*;
-import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Objects;
 
 @Entity
 @Table(name="users")
@@ -13,7 +11,7 @@ import java.util.Objects;
 @Setter
 @ToString
 @RequiredArgsConstructor
-public class Users implements Serializable {
+public class User implements Serializable {
 
 
     @Id
@@ -26,6 +24,12 @@ public class Users implements Serializable {
 
     @Column(length = 50,name="password")
     public String password;
+
+    @Column(name = "is_email_enabled")
+    public boolean emailEnabled;
+
+    @Column(name = "verification",updatable = false,nullable = false)
+    public int verificationCode;
 
 
 

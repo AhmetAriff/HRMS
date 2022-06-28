@@ -1,13 +1,17 @@
 package com.example.hrms.Service.Services;
 
-import com.example.hrms.Dto.CandidatesDto;
-import com.example.hrms.Dto.EmployersDto;
+
+import com.example.hrms.Dtos.EmployerDto;
+import com.example.hrms.Entities.Employers;
+import com.example.hrms.core.Utilities.Results.Result;
+import org.springframework.stereotype.Service;
+
 
 public interface EmployersService {
 
-    void addEmployer(EmployersDto employersDto);
+    Result addEmployer(EmployerDto employerDto);
 
-    void deleteCandidate(EmployersDto employersDto);
+    void deleteCandidate(Employers employers);
 
-    void updateCandidates(EmployersDto employersDto);
+    void updateCandidates(Employers employers);
 }
