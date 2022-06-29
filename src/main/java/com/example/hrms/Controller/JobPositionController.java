@@ -2,11 +2,15 @@ package com.example.hrms.Controller;
 
 import com.example.hrms.Dtos.JobPositionDto;
 import com.example.hrms.Service.Services.JobPositionService;
+import com.example.hrms.core.Utilities.Results.DataResult;
 import com.example.hrms.core.Utilities.Results.Result;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/jobPositions")
@@ -19,6 +23,11 @@ public class JobPositionController {
     public Result addJobPosition(JobPositionDto jobPositionDto)
     {
         return this.jobPositionService.addJobPosition(jobPositionDto);
+    }
+    @GetMapping("/get")
+    public DataResult<List<JobPositionDto>> getAllJobPositions()
+    {
+        return this.jobPositionService.getAllJobPositions();
     }
 
 }

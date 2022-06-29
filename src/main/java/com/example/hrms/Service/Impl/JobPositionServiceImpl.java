@@ -1,16 +1,15 @@
 package com.example.hrms.Service.Impl;
 
+import com.example.hrms.Dtos.CandidateDto;
 import com.example.hrms.Dtos.JobPositionDto;
 import com.example.hrms.Entities.JobPositions;
 import com.example.hrms.Repo.JobPositionRepository;
 import com.example.hrms.Service.Services.JobPositionService;
-import com.example.hrms.core.Utilities.Results.DataResult;
-import com.example.hrms.core.Utilities.Results.ErrorResult;
-import com.example.hrms.core.Utilities.Results.Result;
-import com.example.hrms.core.Utilities.Results.SuccessResult;
+import com.example.hrms.core.Utilities.Results.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 @Service
 @RequiredArgsConstructor
@@ -36,6 +35,23 @@ public class JobPositionServiceImpl implements JobPositionService {
 
     @Override
     public DataResult<List<JobPositionDto>> getAllJobPositions() {
-        return null;
+        List<JobPositions> jobPositions = jobPositionRepository.findAll();
+        List<JobPositionDto> jobPositionDtos = new ArrayList<>();
+
+        jobPositions.forEach(it -> {
+
+            JobPositionDto jobPositionDto = new JobPositionDto();
+            jobPositionDto.setJobId(it.jobId);
+            jobPositionDto.setJobName(it.jobName);
+
+            jobPositionDtos.add(jobPositionDto);
+
+
+
+        });
+
+        return new SuccesDataResult<List<JobPositionDto>>(jobPositionDtos,"job positions listed succesfully");
+
+
     }
 }
