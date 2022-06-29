@@ -36,6 +36,9 @@ public class JobAdvertisement implements Serializable {
 
     @Column(name = "deadline",length = 20)
     public String deadline;
+    @ManyToOne()
+    @JoinColumn(name = "city_id")
+    public City city;
 
 
 

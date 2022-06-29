@@ -28,6 +28,9 @@ public class City implements Serializable {
     @Column(name = "city_name",length = 30,unique = true)
     public String cityName;
 
+    @OneToMany(mappedBy = "city")
+    public List<JobAdvertisement> jobAdvertisements;
+
 
 
 }
