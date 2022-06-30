@@ -20,6 +20,10 @@ public class JobAdvertisement implements Serializable {
     @GeneratedValue(generator = "seq_job_advertisement",strategy = GenerationType.SEQUENCE)
     public int id;
 
+    @ManyToOne
+    @JoinColumn(name = "job_position")
+    public JobPositions jobPositions;
+
     @Column(name = "description",length = 100)
     public String description;
 

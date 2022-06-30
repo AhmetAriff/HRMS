@@ -8,6 +8,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name="job_positions")
@@ -24,6 +25,9 @@ public class JobPositions implements Serializable {
 
     @Column(name = "job_name",length = 50)
     public String jobName;
+
+    @OneToMany(mappedBy = "jobPositions")
+    public List<JobAdvertisement> jobAdvertisements;
 
 
 }
