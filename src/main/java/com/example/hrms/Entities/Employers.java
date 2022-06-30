@@ -7,6 +7,8 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
+
 @Entity
 @Table(name="employers")
 @Getter
@@ -35,6 +37,9 @@ public class Employers implements Serializable {
     @OneToOne
     @JoinColumn(name="user_id")
     public User user;
+
+    @OneToMany(mappedBy = "employers")
+    public List<JobAdvertisement> jobAdvertisements;
 
 
 

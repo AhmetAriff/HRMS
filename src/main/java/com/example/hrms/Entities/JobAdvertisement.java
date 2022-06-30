@@ -24,6 +24,10 @@ public class JobAdvertisement implements Serializable {
     @JoinColumn(name = "job_position")
     public JobPositions jobPositions;
 
+    @ManyToOne
+    @JoinColumn(name = "employer")
+    public Employers employers;
+
     @Column(name = "description",length = 100)
     public String description;
 
