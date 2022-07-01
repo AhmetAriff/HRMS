@@ -6,5 +6,5 @@ import com.example.hrms.core.Utilities.Results.Result;
 
 public interface JobAdvertisementService {
 
-    Result addJobAdvertisement(JobAdvertisement jobAdvertisement);
+    Result addJobAdvertisement(JobAdvertisementDto jobAdvertisementDto);
 }

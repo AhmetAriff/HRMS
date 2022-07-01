@@ -1,5 +1,6 @@
 package com.example.hrms.Controller;
 
+import com.example.hrms.Dtos.JobAdvertisementDto;
 import com.example.hrms.Entities.JobAdvertisement;
 import com.example.hrms.Service.Services.JobAdvertisementService;
 import com.example.hrms.core.Utilities.Results.Result;
@@ -15,9 +16,9 @@ public class JobAdvertisementController {
 
     private final JobAdvertisementService jobAdvertisementService;
     @PostMapping("/add")
-    public Result addJobAdvertisement(JobAdvertisement jobAdvertisement)
+    public Result addJobAdvertisement(JobAdvertisementDto jobAdvertisementDto)
     {
-       return jobAdvertisementService.addJobAdvertisement(jobAdvertisement);
+       return jobAdvertisementService.addJobAdvertisement(jobAdvertisementDto);
     }
 
 }

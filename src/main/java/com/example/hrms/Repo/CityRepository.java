@@ -1,12 +1,12 @@
 package com.example.hrms.Repo;
 
+import com.example.hrms.Entities.City;
 import com.example.hrms.Entities.Employers;
-import com.example.hrms.Entities.JobPositions;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface EmployerRepository extends JpaRepository<Employers, Integer> {
+public interface CityRepository extends JpaRepository<City, Integer> {
 
-    Employers findEmployersByCompanyName(String companyName);
+    City findCitiesByCityName (String cityName);
 }
