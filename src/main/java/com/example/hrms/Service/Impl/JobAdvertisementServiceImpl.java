@@ -30,11 +30,11 @@ public class JobAdvertisementServiceImpl implements JobAdvertisementService {
 
         JobAdvertisement jobAdvertisement = new JobAdvertisement();
 
-        jobAdvertisement.setJobPositions(this.jobPositionRepository.findJobPositionsByJobName(jobAdvertisementDto.getJobPositions().getJobName()));
+        jobAdvertisement.setJobPositions(this.jobPositionRepository.findJobPositionsByJobName(jobAdvertisementDto.getJobPosition()));
 
-        jobAdvertisement.setEmployers(this.employerRepository.findEmployersByCompanyName(jobAdvertisementDto.getEmployers().getCompanyName()));
+        jobAdvertisement.setEmployers(this.employerRepository.findEmployersByCompanyName(jobAdvertisementDto.getEmployerName()));
 
-        jobAdvertisement.setCity(this.cityRepository.findCitiesByCityName(jobAdvertisementDto.getCity().getCityName()));
+        jobAdvertisement.setCity(this.cityRepository.findCitiesByCityName(jobAdvertisementDto.getCityName()));
 
         jobAdvertisement.setDeadline(jobAdvertisementDto.getDeadline());
         jobAdvertisement.setDescription(jobAdvertisementDto.getDescription());

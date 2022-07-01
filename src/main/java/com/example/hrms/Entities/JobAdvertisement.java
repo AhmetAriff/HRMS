@@ -21,11 +21,11 @@ public class JobAdvertisement implements Serializable {
     public int id;
 
     @ManyToOne
-    @JoinColumn(name = "job_position")
+    @JoinColumn(name = "job_position_id")
     public JobPositions jobPositions;
 
     @ManyToOne
-    @JoinColumn(name = "employer")
+    @JoinColumn(name = "employer_id")
     public Employers employers;
 
     @Column(name = "description",length = 100)

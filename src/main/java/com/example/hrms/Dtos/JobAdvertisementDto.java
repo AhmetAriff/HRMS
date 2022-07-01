@@ -13,10 +13,10 @@ public class JobAdvertisementDto {
     public int id;
 
 
-    public Employers employers;
+    public String employerName;
 
 
-    public JobPositions jobPositions;
+    public String jobPosition;
 
 
     public String description;
@@ -34,5 +34,5 @@ public class JobAdvertisementDto {
     public String deadline;
 
 
-    public City city;
+    public String cityName;
 }
