@@ -8,21 +8,21 @@ import lombok.Data;
 public class CandidateDto {
 
 
-    public int candidatesId;
+    private int candidatesId;
 
 
-    public String firstName;
+    private String firstName;
 
 
-    public String lastName;
+    private String lastName;
 
 
-    public String identityNumber;
+    private String identityNumber;
 
 
-    public String birthDate;
+    private String birthDate;
 
 
-    public UserDto userDto;
+    private UserDto userDto;
 
 }

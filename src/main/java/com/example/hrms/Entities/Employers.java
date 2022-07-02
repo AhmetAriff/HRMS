@@ -20,26 +20,26 @@ public class Employers implements Serializable {
     @Id
     @SequenceGenerator(name="seq_employers",allocationSize = 1)
     @GeneratedValue(generator = "seq_employers",strategy = GenerationType.SEQUENCE)
-    public int employerId;
+    private int employerId;
 
 
     @Column(length = 50,name = "company_name")
-    public String companyName;
+    private String companyName;
 
 
     @Column(length = 50,name = "website")
-    public String website;
+    private String website;
 
 
     @Column(length = 50,name = "tel_num")
-    public String telNum;
+    private String telNum;
 
     @OneToOne
     @JoinColumn(name="user_id")
-    public User user;
+    private User user;
 
     @OneToMany(mappedBy = "employers")
-    public List<JobAdvertisement> jobAdvertisements;
+    private List<JobAdvertisement> jobAdvertisements;
 
 
 

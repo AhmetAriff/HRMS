@@ -8,16 +8,16 @@ import javax.persistence.*;
 public class PersonalDto {
 
 
-    public int personalId;
+    private int personalId;
 
 
 
-    public String personalFirstName;
+    private String personalFirstName;
 
 
 
-    public String personalLastName;
+    private String personalLastName;
 
 
-    public UserDto userDto;
+    private UserDto userDto;
 }

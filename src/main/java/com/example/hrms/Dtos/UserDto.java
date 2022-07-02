@@ -7,18 +7,18 @@ import lombok.Data;
 public class UserDto {
 
 
-    public int id;
+    private int id;
 
 
-    public String mail;
+    private String mail;
 
 
-    public String password;
+    private String password;
 
 
-    public boolean emailEnabled;
+    private boolean emailEnabled;
 
 
-    public int verificationCode;
+    private int verificationCode;
 
 }

@@ -41,8 +41,8 @@ public class JobPositionServiceImpl implements JobPositionService {
         jobPositions.forEach(it -> {
 
             JobPositionDto jobPositionDto = new JobPositionDto();
-            jobPositionDto.setJobId(it.jobId);
-            jobPositionDto.setJobName(it.jobName);
+            jobPositionDto.setJobId(it.getJobId());
+            jobPositionDto.setJobName(it.getJobName());
 
             jobPositionDtos.add(jobPositionDto);
 

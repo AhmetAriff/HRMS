@@ -10,12 +10,15 @@ import com.example.hrms.Service.Services.JobAdvertisementService;
 import com.example.hrms.core.Utilities.Results.Result;
 import com.example.hrms.core.Utilities.Results.SuccessResult;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.PrimitiveIterator;
 
 @Service
 @RequiredArgsConstructor
+@Configuration
 public class JobAdvertisementServiceImpl implements JobAdvertisementService {
 
     private final JobAdvertisementRepository jobAdvertisementRepository;
@@ -36,6 +39,7 @@ public class JobAdvertisementServiceImpl implements JobAdvertisementService {
 
         jobAdvertisement.setCity(this.cityRepository.findCitiesByCityName(jobAdvertisementDto.getCityName()));
 
+        jobAdvertisement.setReleaseDate(new Date());
         jobAdvertisement.setDeadline(jobAdvertisementDto.getDeadline());
         jobAdvertisement.setDescription(jobAdvertisementDto.getDescription());
         jobAdvertisement.setMaxSalary(jobAdvertisementDto.getMaxSalary());

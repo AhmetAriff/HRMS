@@ -21,13 +21,13 @@ public class JobPositions implements Serializable {
     @Id
     @SequenceGenerator(name="seq_job_positions",allocationSize = 1)
     @GeneratedValue(generator = "seq_job_positions",strategy = GenerationType.SEQUENCE)
-    public int jobId;
+    private int jobId;
 
     @Column(name = "job_name",length = 50)
-    public String jobName;
+    private String jobName;
 
     @OneToMany(mappedBy = "jobPositions")
-    public List<JobAdvertisement> jobAdvertisements;
+    private List<JobAdvertisement> jobAdvertisements;
 
 
 }

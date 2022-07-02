@@ -80,7 +80,7 @@ public class CandidatesServiceImpl implements CandidatesService {
                 candidateDto.setFirstName(it.getFirstName());
                 candidateDto.setLastName(it.getLastName());
                 candidateDto.setBirthDate(it.getBirthDate());
-                candidateDto.setUserDto(userService.convertUserDto(it.user));
+                candidateDto.setUserDto(userService.convertUserDto(it.getUser()));
                 candidateDtos.add(candidateDto);
             });
              return new SuccesDataResult<List<CandidateDto>>(candidateDtos,"candidates listed succesfuly");

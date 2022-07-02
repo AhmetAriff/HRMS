@@ -22,14 +22,14 @@ public class City implements Serializable {
     @Id
     @SequenceGenerator(name="seq_cities",allocationSize = 1)
     @GeneratedValue(generator = "seq_cities",strategy = GenerationType.SEQUENCE)
-    public int cityId;
+    private int cityId;
 
 
     @Column(name = "city_name",length = 30,unique = true)
-    public String cityName;
+    private String cityName;
 
     @OneToMany(mappedBy = "city")
-    public List<JobAdvertisement> jobAdvertisements;
+    private List<JobAdvertisement> jobAdvertisements;
 
 
 

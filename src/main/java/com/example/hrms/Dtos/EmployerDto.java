@@ -8,21 +8,21 @@ import javax.persistence.*;
 public class EmployerDto{
 
 
-        public int employerId;
+        private int employerId;
 
 
 
-        public String companyName;
+        private String companyName;
 
 
 
-        public String website;
+        private String website;
 
 
 
-        public String telNum;
+        private String telNum;
 
 
-        public UserDto userDto;
+        private UserDto userDto;
 
 }

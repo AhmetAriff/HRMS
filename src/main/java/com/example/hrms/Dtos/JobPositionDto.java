@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class JobPositionDto {
 
-    public int jobId;
+    private int jobId;
 
-    public String jobName;
+    private String jobName;
 }

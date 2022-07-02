@@ -18,19 +18,19 @@ public class SystemPersonal implements Serializable {
     @Id
     @SequenceGenerator(name="seq_personals",allocationSize = 1)
     @GeneratedValue(generator = "seq_personals",strategy = GenerationType.SEQUENCE)
-    public int personalId;
+    private int personalId;
 
 
     @Column(length = 50,name = "personal_first_name")
-    public String personalFirstName;
+    private String personalFirstName;
 
 
     @Column(length = 50,name = "personal_last_name")
-    public String personalLastName;
+    private String personalLastName;
 
     @OneToOne
     @JoinColumn(name="user_id")
-    public User user;
+    private User user;
 
 
 }

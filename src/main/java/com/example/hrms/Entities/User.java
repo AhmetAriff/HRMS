@@ -17,19 +17,19 @@ public class User implements Serializable {
     @Id
     @SequenceGenerator(name="seq_user",allocationSize = 1)
     @GeneratedValue(generator = "seq_user",strategy = GenerationType.SEQUENCE)
-    public int id;
+    private int id;
 
     @Column(length = 50,name = "mail")
-    public String mail;
+    private String mail;
 
     @Column(length = 50,name="password")
-    public String password;
+    private String password;
 
     @Column(name = "is_email_enabled")
-    public boolean emailEnabled;
+    private boolean emailEnabled;
 
     @Column(name = "verification",updatable = false,nullable = false)
-    public int verificationCode;
+    private int verificationCode;
 
 
 

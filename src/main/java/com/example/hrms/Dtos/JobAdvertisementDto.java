@@ -1,38 +1,38 @@
 package com.example.hrms.Dtos;
 
-import com.example.hrms.Entities.City;
-import com.example.hrms.Entities.Employers;
-import com.example.hrms.Entities.JobPositions;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
-import javax.persistence.*;
+import java.util.Date;
+
 @Data
 public class JobAdvertisementDto {
 
 
-    public int id;
+    private int id;
 
 
-    public String employerName;
+    private String employerName;
 
 
-    public String jobPosition;
+    private String jobPosition;
 
 
-    public String description;
+    private String description;
 
 
-    public String minSalary;
+    private String minSalary;
 
 
-    public String maxSalary;
+    private String maxSalary;
 
 
-    public int openPositions;
+    private int openPositions;
 
 
-    public String deadline;
+    private Date deadline;
 
 
-    public String cityName;
+    private String cityName;
 }

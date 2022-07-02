@@ -19,23 +19,23 @@ public class Candidates implements Serializable {
     @Id
     @SequenceGenerator(name="seq_candidates",allocationSize = 1)
     @GeneratedValue(generator = "seq_candidates",strategy = GenerationType.SEQUENCE)
-    public int candidatesId;
+    private int candidatesId;
 
     @Column(length = 50,name = "first_name")
-    public String firstName;
+    private String firstName;
 
     @Column(length = 50,name = "last_name")
-    public String lastName;
+    private String lastName;
 
     @Column(length = 11,name = "identity_number")
-    public String identityNumber;
+    private String identityNumber;
 
     @Column(length = 20,name = "birth_date")
-    public String birthDate;
+    private String birthDate;
 
     @OneToOne
     @JoinColumn(name="user_id")
-    public User user;
+    private User user;
 
 
 

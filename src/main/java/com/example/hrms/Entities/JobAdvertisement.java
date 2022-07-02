@@ -1,12 +1,12 @@
 package com.example.hrms.Entities;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
+
 @Entity
 @Table(name="job_advertisement")
 @Getter
@@ -18,35 +18,40 @@ public class JobAdvertisement implements Serializable {
     @Id
     @SequenceGenerator(name="seq_job_advertisement",allocationSize = 1)
     @GeneratedValue(generator = "seq_job_advertisement",strategy = GenerationType.SEQUENCE)
-    public int id;
+    private int id;
 
     @ManyToOne
     @JoinColumn(name = "job_position_id")
-    public JobPositions jobPositions;
+    private JobPositions jobPositions;
 
     @ManyToOne
     @JoinColumn(name = "employer_id")
-    public Employers employers;
+    private Employers employers;
 
     @Column(name = "description",length = 100)
-    public String description;
+    private String description;
 
 
     @Column(name = "min_salary",length = 10)
-    public String minSalary;
+    private String minSalary;
 
 
     @Column(name = "max_salary",length = 10)
-    public String maxSalary;
+    private String maxSalary;
 
     @Column(name = "open_positions",length = 10)
-    public int openPositions;
+    private int openPositions;
 
-    @Column(name = "deadline",length = 20)
-    public String deadline;
+    @JsonFormat(pattern="yyyy-MM-dd")
+    @Column(name = "deadline")
+    private Date deadline;
+
+    @JsonFormat(pattern="yyyy-MM-dd")
+    @Column(name = "release_date")
+    private Date releaseDate;
     @ManyToOne()
     @JoinColumn(name = "city_id")
-    public City city;
+    private City city;
 
 
 
