@@ -6,7 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
-import javax.websocket.OnError;
+
 import java.io.Serializable;
 import java.util.List;
 

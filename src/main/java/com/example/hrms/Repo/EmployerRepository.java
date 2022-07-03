@@ -1,7 +1,6 @@
 package com.example.hrms.Repo;
 
 import com.example.hrms.Entities.Employers;
-import com.example.hrms.Entities.JobPositions;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,4 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface EmployerRepository extends JpaRepository<Employers, Integer> {
 
     Employers findEmployersByCompanyName(String companyName);
+
+    Employers findEmployersByEmployerId(int id);
 }

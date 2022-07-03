@@ -11,5 +11,7 @@ public interface JobPositionRepository extends JpaRepository<JobPositions, Integ
 
     JobPositions findJobPositionsByJobName(String jobName);
 
+    JobPositions findJobPositionsByJobId(int id);
+
 
 }

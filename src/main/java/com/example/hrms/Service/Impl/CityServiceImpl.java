@@ -32,6 +32,10 @@ public class CityServiceImpl implements CityService {
         }
 
 
+    }
 
+    @Override
+    public City getCityById(int id) {
+      return   this.cityRepository.findCitiesByCityId(id);
     }
 }

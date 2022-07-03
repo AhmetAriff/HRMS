@@ -1,8 +1,9 @@
 package com.example.hrms.Dtos;
 
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.Data;
+
 
 import java.util.Date;
 
@@ -32,6 +33,9 @@ public class JobAdvertisementDto {
 
 
     private Date deadline;
+
+
+    private Date releaseDate;
 
 
     private String cityName;

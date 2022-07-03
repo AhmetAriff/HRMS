@@ -1,11 +1,9 @@
 package com.example.hrms.Controller;
 
 import com.example.hrms.Dtos.CandidateDto;
-import com.example.hrms.Entities.Candidates;
 import com.example.hrms.Service.Services.CandidatesService;
 import com.example.hrms.core.Utilities.Results.DataResult;
 import com.example.hrms.core.Utilities.Results.Result;
-import com.example.hrms.core.Utilities.Results.SuccessResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

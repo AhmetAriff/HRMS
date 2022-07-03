@@ -1,6 +1,6 @@
 package com.example.hrms.Service.Impl;
 
-import com.example.hrms.Dtos.CandidateDto;
+
 import com.example.hrms.Dtos.JobPositionDto;
 import com.example.hrms.Entities.JobPositions;
 import com.example.hrms.Repo.JobPositionRepository;
@@ -53,5 +53,10 @@ public class JobPositionServiceImpl implements JobPositionService {
         return new SuccesDataResult<List<JobPositionDto>>(jobPositionDtos,"job positions listed succesfully");
 
 
+    }
+
+    @Override
+    public JobPositions getJobPositionById(int id) {
+       return jobPositionRepository.findJobPositionsByJobId(id);
     }
 }
