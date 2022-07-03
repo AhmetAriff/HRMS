@@ -10,4 +10,6 @@ public interface EmployerRepository extends JpaRepository<Employers, Integer> {
     Employers findEmployersByCompanyName(String companyName);
 
     Employers findEmployersByEmployerId(int id);
+
+    boolean existsEmployersByCompanyName(String employerName);
 }

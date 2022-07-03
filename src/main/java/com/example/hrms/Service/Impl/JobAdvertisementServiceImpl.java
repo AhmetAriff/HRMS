@@ -11,10 +11,7 @@ import com.example.hrms.Service.Services.CityService;
 import com.example.hrms.Service.Services.EmployersService;
 import com.example.hrms.Service.Services.JobAdvertisementService;
 import com.example.hrms.Service.Services.JobPositionService;
-import com.example.hrms.core.Utilities.Results.DataResult;
-import com.example.hrms.core.Utilities.Results.Result;
-import com.example.hrms.core.Utilities.Results.SuccesDataResult;
-import com.example.hrms.core.Utilities.Results.SuccessResult;
+import com.example.hrms.core.Utilities.Results.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
@@ -96,9 +93,12 @@ public class JobAdvertisementServiceImpl implements JobAdvertisementService {
 
     @Override
     public DataResult<List<JobAdvertisementDto>> getAllJobAdvertisementByEmployerName(String employerName) {
-       List<JobAdvertisement> jobAdvertisements =jobAdvertisementRepository.findJobAdvertisementByEmployersCompanyName(employerName);
 
-       List<JobAdvertisementDto> jobAdvertisementDtos=new ArrayList<>();
+       if(this.employerRepository.existsEmployersByCompanyName(employerName))
+       {
+
+           List<JobAdvertisement> jobAdvertisements =jobAdvertisementRepository.findJobAdvertisementByEmployersCompanyName(employerName);
+           List<JobAdvertisementDto> jobAdvertisementDtos=new ArrayList<>();
 
         jobAdvertisements.forEach(it -> {
 
@@ -118,6 +118,12 @@ public class JobAdvertisementServiceImpl implements JobAdvertisementService {
         });
 
         return new SuccesDataResult<List<JobAdvertisementDto>>(jobAdvertisementDtos,"JobAdvertisements listed succesfully");
+
+       }
+       else
+       {
+          return new ErrorDataResult<List<JobAdvertisementDto>>(null,"this company name does not exist");
+       }
 
 
     }
