@@ -2,6 +2,7 @@ package com.example.hrms.Entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -42,13 +43,13 @@ public class JobAdvertisement implements Serializable {
     @Column(name = "open_positions",length = 10)
     private int openPositions;
 
-    @JsonFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     @Column(name = "deadline")
     private Date deadline;
 
-    @JsonFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     @Column(name = "release_date")
-    private Date releaseDate;
+    private Date releaseDate ;
     @ManyToOne()
     @JoinColumn(name = "city_id")
     private City city;

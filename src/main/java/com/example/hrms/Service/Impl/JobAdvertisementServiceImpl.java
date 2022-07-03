@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
-import java.util.PrimitiveIterator;
+
 
 @Service
 @RequiredArgsConstructor
@@ -47,7 +47,7 @@ public class JobAdvertisementServiceImpl implements JobAdvertisementService {
         jobAdvertisement.setOpenPositions(jobAdvertisementDto.getOpenPositions());
 
         this.jobAdvertisementRepository.save(jobAdvertisement);
-        return new SuccessResult("added to db");
+        return new SuccessResult(" Job Advertisement added to db");
 
     }
 }
