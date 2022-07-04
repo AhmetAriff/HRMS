@@ -31,5 +31,15 @@ public class JobAdvertisementController {
     {
         return this.jobAdvertisementService.getAllJobAdvertisementByEmployerName(employerName);
     }
+    @GetMapping("/get_by_deadline")
+    public DataResult<List<JobAdvertisementDto>> getAllJobAdvertisementOrderByDeadlineAsc()
+    {
+        return this.jobAdvertisementService.getAllJobAdvertisementOrderByDeadlineAsc();
+    }
+    @PostMapping("/change_to_unactive")
+    public Result changeToUnActive(int id)
+    {
+        return this.jobAdvertisementService.changeToUnActive(id);
+    }
 
 }

@@ -27,17 +27,11 @@ import java.util.List;
 public class JobAdvertisementServiceImpl implements JobAdvertisementService {
 
     private final JobAdvertisementRepository jobAdvertisementRepository;
-
     private final JobPositionRepository jobPositionRepository;
-
     private final EmployerRepository employerRepository;
-
     private final CityRepository cityRepository;
-
     private final EmployersService employersService;
-
     private final CityService cityService;
-
     private final JobPositionService jobPositionService;
     @Override
     public Result addJobAdvertisement(JobAdvertisementDto jobAdvertisementDto) {
@@ -56,6 +50,7 @@ public class JobAdvertisementServiceImpl implements JobAdvertisementService {
         jobAdvertisement.setMaxSalary(jobAdvertisementDto.getMaxSalary());
         jobAdvertisement.setMinSalary(jobAdvertisementDto.getMinSalary());
         jobAdvertisement.setOpenPositions(jobAdvertisementDto.getOpenPositions());
+        jobAdvertisement.setStatus(true);
 
         this.jobAdvertisementRepository.save(jobAdvertisement);
         return new SuccessResult(" Job Advertisement added to db");
@@ -65,29 +60,10 @@ public class JobAdvertisementServiceImpl implements JobAdvertisementService {
     @Override
     public DataResult<List<JobAdvertisementDto>> getAllJobAdvertisement() {
 
-        List<JobAdvertisement> jobAdvertisements=jobAdvertisementRepository.findAll();
-
+        List<JobAdvertisement> jobAdvertisements=jobAdvertisementRepository.findJobAdvertisementByStatus(true);
         List<JobAdvertisementDto> jobAdvertisementDtos=new ArrayList<>();
-
-        jobAdvertisements.forEach(it -> {
-
-            JobAdvertisementDto jobAdvertisementDto = new JobAdvertisementDto();
-            jobAdvertisementDto.setDeadline(it.getDeadline());
-            jobAdvertisementDto.setReleaseDate(it.getReleaseDate());
-            jobAdvertisementDto.setDescription(it.getDescription());
-            jobAdvertisementDto.setMaxSalary(it.getMaxSalary());
-            jobAdvertisementDto.setMinSalary(it.getMinSalary());
-            jobAdvertisementDto.setEmployerName(employersService.getEmployerById(it.getEmployers().getEmployerId()).getCompanyName());
-            jobAdvertisementDto.setCityName(cityService.getCityById(it.getCity().getCityId()).getCityName());
-            jobAdvertisementDto.setJobPosition((jobPositionService.getJobPositionById(it.getJobPositions().getJobId())).getJobName());
-
-            jobAdvertisementDtos.add(jobAdvertisementDto);
-
-
-        });
-
+        jobAdvertisements.forEach(it -> {jobAdvertisementDtos.add(convertJobAdvertisementDto(it));});
         return new SuccesDataResult<List<JobAdvertisementDto>>(jobAdvertisementDtos,"JobAdvertisements listed succesfully");
-
 
     }
 
@@ -96,35 +72,49 @@ public class JobAdvertisementServiceImpl implements JobAdvertisementService {
 
        if(this.employerRepository.existsEmployersByCompanyName(employerName))
        {
-
-           List<JobAdvertisement> jobAdvertisements =jobAdvertisementRepository.findJobAdvertisementByEmployersCompanyName(employerName);
+           List<JobAdvertisement> jobAdvertisements =jobAdvertisementRepository.findJobAdvertisementByEmployersCompanyNameAndStatus(employerName,true);
            List<JobAdvertisementDto> jobAdvertisementDtos=new ArrayList<>();
-
-        jobAdvertisements.forEach(it -> {
-
-            JobAdvertisementDto jobAdvertisementDto = new JobAdvertisementDto();
-            jobAdvertisementDto.setDeadline(it.getDeadline());
-            jobAdvertisementDto.setReleaseDate(it.getReleaseDate());
-            jobAdvertisementDto.setDescription(it.getDescription());
-            jobAdvertisementDto.setMaxSalary(it.getMaxSalary());
-            jobAdvertisementDto.setMinSalary(it.getMinSalary());
-            jobAdvertisementDto.setEmployerName(employersService.getEmployerById(it.getEmployers().getEmployerId()).getCompanyName());
-            jobAdvertisementDto.setCityName(cityService.getCityById(it.getCity().getCityId()).getCityName());
-            jobAdvertisementDto.setJobPosition((jobPositionService.getJobPositionById(it.getJobPositions().getJobId())).getJobName());
-
-            jobAdvertisementDtos.add(jobAdvertisementDto);
-
-
-        });
-
-        return new SuccesDataResult<List<JobAdvertisementDto>>(jobAdvertisementDtos,"JobAdvertisements listed succesfully");
-
+           jobAdvertisements.forEach(it -> {jobAdvertisementDtos.add(convertJobAdvertisementDto(it));});
+           return new SuccesDataResult<List<JobAdvertisementDto>>(jobAdvertisementDtos,"JobAdvertisements listed succesfully");
        }
        else
        {
           return new ErrorDataResult<List<JobAdvertisementDto>>(null,"this company name does not exist");
        }
+    }
 
+    @Override
+    public DataResult<List<JobAdvertisementDto>> getAllJobAdvertisementOrderByDeadlineAsc() {
+        List<JobAdvertisement> jobAdvertisements=jobAdvertisementRepository.findJobAdvertisementByStatusOrderByDeadlineAsc(true);
+        List<JobAdvertisementDto> jobAdvertisementDtos=new ArrayList<>();
+        jobAdvertisements.forEach(it -> {jobAdvertisementDtos.add(convertJobAdvertisementDto(it));});
+        return new SuccesDataResult<List<JobAdvertisementDto>>(jobAdvertisementDtos,"JobAdvertisements listed succesfully order by deadline");
+    }
+
+    @Override
+    public JobAdvertisementDto convertJobAdvertisementDto(JobAdvertisement jobAdvertisement) {
+
+        JobAdvertisementDto jobAdvertisementDto = new JobAdvertisementDto();
+        jobAdvertisementDto.setDeadline(jobAdvertisement.getDeadline());
+        jobAdvertisementDto.setReleaseDate(jobAdvertisement.getReleaseDate());
+        jobAdvertisementDto.setDescription(jobAdvertisement.getDescription());
+        jobAdvertisementDto.setMaxSalary(jobAdvertisement.getMaxSalary());
+        jobAdvertisementDto.setMinSalary(jobAdvertisement.getMinSalary());
+        jobAdvertisementDto.setEmployerName(employersService.getEmployerById(jobAdvertisement.getEmployers().getEmployerId()).getCompanyName());
+        jobAdvertisementDto.setCityName(cityService.getCityById(jobAdvertisement.getCity().getCityId()).getCityName());
+        jobAdvertisementDto.setJobPosition((jobPositionService.getJobPositionById(jobAdvertisement.getJobPositions().getJobId())).getJobName());
+        return jobAdvertisementDto;
 
     }
+
+    @Override
+    public Result changeToUnActive(int id) {
+
+        JobAdvertisement jobAdvertisement= jobAdvertisementRepository.getJobAdvertisementById(id);
+        jobAdvertisement.setStatus(false);
+        jobAdvertisementRepository.save(jobAdvertisement);
+        return new SuccessResult("Job Advertisement Unactivated");
+    }
+
+
 }

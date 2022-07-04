@@ -54,6 +54,10 @@ public class JobAdvertisement implements Serializable {
     @JoinColumn(name = "city_id")
     private City city;
 
+    @Column(name = "status")
+    private boolean status;
+
+
 
 
 
