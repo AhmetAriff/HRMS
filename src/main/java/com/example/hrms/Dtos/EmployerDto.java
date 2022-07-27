@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 
@@ -16,14 +17,17 @@ public class EmployerDto{
 
 
         @NotNull
+        @NotBlank
         private String companyName;
 
 
         @NotNull
+        @NotBlank
         private String website;
 
 
         @NotNull
+        @NotBlank
         private String telNum;
 
 

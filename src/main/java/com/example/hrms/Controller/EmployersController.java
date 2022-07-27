@@ -28,19 +28,7 @@ public class EmployersController {
     public ResponseEntity<?> addEmployers(@Valid @RequestBody EmployerDto employerDto) {
         return ResponseEntity.ok(this.employersService.addEmployer(employerDto));
     }
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorDataResult<Object> handleValidationException(MethodArgumentNotValidException exceptions){
 
-        Map<String,String> validationErrors = new HashMap<String,String>();
-        for(FieldError fieldError: exceptions.getBindingResult().getFieldErrors()){
-            validationErrors.put(fieldError.getField(),fieldError.getDefaultMessage());
-        }
-
-        ErrorDataResult<Object> errors = new ErrorDataResult<>(validationErrors,"Doğrulama Hataları");
-        return errors;
-
-    }
     @GetMapping("/get")
     public DataResult<List<EmployerDto>> getAllEmployers(){
 
