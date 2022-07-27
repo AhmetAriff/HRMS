@@ -5,8 +5,10 @@ import com.example.hrms.Service.Services.CandidatesService;
 import com.example.hrms.core.Utilities.Results.DataResult;
 import com.example.hrms.core.Utilities.Results.Result;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -19,9 +21,8 @@ public class CandidateController {
 
 
      @PostMapping("/add")
-     public Result addCandidate(@RequestBody CandidateDto candidateDto) {
-        return this.candidatesService.addCandidate(candidateDto);
-
+     public ResponseEntity<?> addCandidate(@Valid @RequestBody CandidateDto candidateDto) {
+         return ResponseEntity.ok(this.candidatesService.addCandidate(candidateDto));
     }
 
     @GetMapping("/get")

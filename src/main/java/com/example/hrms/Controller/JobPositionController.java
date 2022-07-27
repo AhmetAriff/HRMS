@@ -5,8 +5,10 @@ import com.example.hrms.Service.Services.JobPositionService;
 import com.example.hrms.core.Utilities.Results.DataResult;
 import com.example.hrms.core.Utilities.Results.Result;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -17,11 +19,11 @@ public class JobPositionController {
     private final JobPositionService jobPositionService;
 
     @PostMapping("/add")
-    public Result addJobPosition( @RequestBody JobPositionDto jobPositionDto)
+    public ResponseEntity<?> addJobPosition(@Valid @RequestBody JobPositionDto jobPositionDto)
     {
-        return this.jobPositionService.addJobPosition(jobPositionDto);
+        return ResponseEntity.ok(this.jobPositionService.addJobPosition(jobPositionDto));
     }
-    @GetMapping("/get")
+    @GetMapping("/getAll")
     public DataResult<List<JobPositionDto>> getAllJobPositions()
     {
         return this.jobPositionService.getAllJobPositions();
