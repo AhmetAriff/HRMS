@@ -37,6 +37,10 @@ public class Candidates implements Serializable {
     @JoinColumn(name="user_id")
     private User user;
 
+    @OneToOne
+    @JoinColumn(name="cv_id")
+    private Cv cv;
+
 
 
 
