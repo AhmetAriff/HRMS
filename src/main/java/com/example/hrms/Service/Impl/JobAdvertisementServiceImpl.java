@@ -95,6 +95,7 @@ public class JobAdvertisementServiceImpl implements JobAdvertisementService {
     public JobAdvertisementDto convertJobAdvertisementDto(JobAdvertisement jobAdvertisement) {
 
         JobAdvertisementDto jobAdvertisementDto = new JobAdvertisementDto();
+       jobAdvertisementDto.setId(jobAdvertisement.getId());
         jobAdvertisementDto.setDeadline(jobAdvertisement.getDeadline());
         jobAdvertisementDto.setReleaseDate(jobAdvertisement.getReleaseDate());
         jobAdvertisementDto.setDescription(jobAdvertisement.getDescription());
@@ -114,6 +115,14 @@ public class JobAdvertisementServiceImpl implements JobAdvertisementService {
         jobAdvertisement.setStatus(false);
         jobAdvertisementRepository.save(jobAdvertisement);
         return new SuccessResult("Job Advertisement Unactivated");
+    }
+
+    @Override
+    public Result changeToActive(int id) {
+        JobAdvertisement jobAdvertisement= jobAdvertisementRepository.getJobAdvertisementById(id);
+        jobAdvertisement.setStatus(true);
+        jobAdvertisementRepository.save(jobAdvertisement);
+        return  new SuccessResult("Job Advertisemenet Activated");
     }
 
 

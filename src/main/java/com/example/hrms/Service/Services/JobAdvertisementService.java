@@ -20,4 +20,6 @@ public interface JobAdvertisementService {
     JobAdvertisementDto convertJobAdvertisementDto(JobAdvertisement jobAdvertisement);
 
     Result changeToUnActive(int id);
+
+    Result changeToActive(int id);
 }

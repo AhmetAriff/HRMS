@@ -38,10 +38,16 @@ public class JobAdvertisementController {
     {
         return this.jobAdvertisementService.getAllJobAdvertisementOrderByDeadlineAsc();
     }
-    @PostMapping("/change_to_unactive")
+    @PutMapping("/change_to_unactive")
     public Result changeToUnActive(@RequestParam int id)
     {
         return this.jobAdvertisementService.changeToUnActive(id);
+    }
+
+    @PutMapping("/change_to_active")
+    public Result changeToActive(@RequestParam int id)
+    {
+        return this.jobAdvertisementService.changeToActive(id);
     }
 
 }

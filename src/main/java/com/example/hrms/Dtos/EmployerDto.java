@@ -14,18 +14,15 @@ public class EmployerDto{
         private int employerId;
 
 
-        @NotNull
-        @NotBlank
+
         private String companyName;
 
 
-        @NotNull
-        @NotBlank
+
         private String website;
 
 
-        @NotNull
-        @NotBlank
+
         private String telNum;
 
 
