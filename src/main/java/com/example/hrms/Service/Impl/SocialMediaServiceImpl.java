@@ -16,11 +16,11 @@ public class SocialMediaServiceImpl implements SocialMediaService {
     private final SocialMediaRepository socialMediaRepository;
 
     @Override
-    public Result addSocialMedia(SocialMediaDto socialMediaDto) {
+    public SocialMedia addSocialMedia(SocialMediaDto socialMediaDto) {
         SocialMedia socialMedia = new SocialMedia();
         socialMedia.setGithubUrl(socialMediaDto.getGithubUrl());
         socialMedia.setLinkednUrl(socialMediaDto.getLinkednUrl());
         socialMediaRepository.save(socialMedia);
-        return new  SuccessResult("social media informations added to DB");
+       return this.socialMediaRepository.save(socialMedia);
     }
 }

@@ -20,5 +20,5 @@ public class SchoolDto {
     private int endOfSchool;
 
 
-    private CvDto cvDto;
+    private int CvId;
 }

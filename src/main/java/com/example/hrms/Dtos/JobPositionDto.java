@@ -10,7 +10,6 @@ public class JobPositionDto {
 
     private int jobId;
 
-    @NotBlank
-    @NotNull
+
     private String jobName;
 }

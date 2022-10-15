@@ -21,7 +21,7 @@ public class Cv implements Serializable {
     @Id
     @SequenceGenerator(name="seq_cv",allocationSize = 1)
     @GeneratedValue(generator = "seq_cv",strategy = GenerationType.SEQUENCE)
-    private int CvId;
+    private int cvId;
 
 
     @OneToOne
