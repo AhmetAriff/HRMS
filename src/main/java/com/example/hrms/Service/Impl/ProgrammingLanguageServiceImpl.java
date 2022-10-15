@@ -16,11 +16,10 @@ public class ProgrammingLanguageServiceImpl implements ProgrammingLanguageServic
     private final ProgrammingLanguageRepository programmingLanguageRepository;
 
     @Override
-    public Result addProgrammingLanguage(ProgrammingLanguageDto programmingLanguageDto) {
+    public ProgrammingLanguage addProgrammingLanguage(ProgrammingLanguageDto programmingLanguageDto) {
         ProgrammingLanguage programmingLanguage = new ProgrammingLanguage();
         programmingLanguage.setProgrammingLanguageName(programmingLanguageDto.getProgrammingLanguageName());
-        programmingLanguageRepository.save(programmingLanguage);
-        return new SuccessResult("programmingLanguage Added to DB");
+        return programmingLanguageRepository.save(programmingLanguage);
 
     }
 }

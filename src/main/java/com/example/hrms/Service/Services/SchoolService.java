@@ -5,5 +5,5 @@ import com.example.hrms.Entities.Schools;
 import com.example.hrms.core.Utilities.Results.Result;
 
 public interface SchoolService {
-    Result addSchool(SchoolDto schoolDto);
+    Schools addSchool(SchoolDto schoolDto);
 }

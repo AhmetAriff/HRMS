@@ -19,5 +19,17 @@ public class CvDto {
     private ImageDto imageDto;
 
 
+    private SchoolDto schoolDto;
+
+
+    private ProgrammingLanguageDto programmingLanguageDto;
+
+
+    private JobExperienceDto jobExperienceDto;
+
+
+    private ForeignLanguageDto foreignLanguageDto;
+
+
     private String CoverLetter;
 }
