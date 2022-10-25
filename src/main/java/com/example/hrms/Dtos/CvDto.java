@@ -1,12 +1,14 @@
 package com.example.hrms.Dtos;
 
 import com.example.hrms.Entities.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Data
+@AllArgsConstructor
 public class CvDto {
 
 

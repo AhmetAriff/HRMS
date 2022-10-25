@@ -18,7 +18,7 @@ import javax.validation.Valid;
 public class CityController {
     private final CityService cityService;
 
-    @PostMapping("/add")
+    @PostMapping
     public ResponseEntity<?> addCity(@Valid @RequestBody CityDto cityDto)
     {
         return ResponseEntity.ok(this.cityService.addCity(cityDto));

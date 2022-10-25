@@ -19,7 +19,7 @@ public class CvController {
 
     private final CvService cvService;
 
-    @PostMapping("/add")
+    @PostMapping
     public ResponseEntity<?> addCv(@Valid @RequestBody CvDto cvDto)
     {
         return ResponseEntity.ok(this.cvService.addCv(cvDto));

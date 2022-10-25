@@ -24,12 +24,12 @@ import java.util.Map;
 public class EmployersController {
     private final EmployersService employersService;
 
-    @PostMapping("/add")
+    @PostMapping
     public ResponseEntity<?> addEmployers(@Valid @RequestBody EmployerDto employerDto) {
         return ResponseEntity.ok(this.employersService.addEmployer(employerDto));
     }
 
-    @GetMapping("/get")
+    @GetMapping
     public DataResult<List<EmployerDto>> getAllEmployers(){
 
         return this.employersService.getAllEmployers();

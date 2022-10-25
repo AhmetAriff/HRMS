@@ -2,20 +2,21 @@ package com.example.hrms.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 @Entity
 @Table(name="CV")
 @Getter
 @Setter
-@ToString
 @RequiredArgsConstructor
+@AllArgsConstructor
 
 public class Cv implements Serializable {
     @Id
@@ -28,23 +29,27 @@ public class Cv implements Serializable {
     @JoinColumn(name = "social_Media_Id")
     private SocialMedia socialMedia;
 
-    @OneToMany(mappedBy = "cv")
-    private List<Schools> schools;
+    @ManyToMany
+    @JoinTable(name = "schools_cv",joinColumns = @JoinColumn(name = "cvId"), inverseJoinColumns = @JoinColumn(name = "schoolsId"))
+    private Set<Schools> addedSchools  ;
 
     @OneToMany(mappedBy = "cv")
-    private List<JobExperience>  jobExperience;
+    private Set<JobExperience>  jobExperience;
 
-    @OneToMany(mappedBy = "cv")
-    private List<ForeignLanguage>  foreignLanguage;
+    @ManyToMany(mappedBy = "cv")
+    @JoinTable(name = "foriegn_language_cv",joinColumns = @JoinColumn(name = "cvId"), inverseJoinColumns = @JoinColumn(name = "foreignLanguageId"))
+    private Set<ForeignLanguage>  foreignLanguage ;
 
     @OneToOne
     @JoinColumn(name="image_url")
     private Image image;
 
-    @OneToMany(mappedBy = "cv")
-    private List<ProgrammingLanguage>  programmingLanguage;
+    @ManyToMany(mappedBy = "cv")
+    @JoinTable(name = "programmingLanguages_cv",joinColumns = @JoinColumn(name = "cvId"), inverseJoinColumns = @JoinColumn(name = "programmingLanguageId"))
+    private Set<ProgrammingLanguage>  programmingLanguage ;
 
     @Column(name="cover_letter",length = 300)
     private String CoverLetter;
+
 
 }

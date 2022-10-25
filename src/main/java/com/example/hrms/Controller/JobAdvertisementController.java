@@ -12,40 +12,40 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/jobadvertisement")
+@RequestMapping("/api/job-advertisements")
 @RequiredArgsConstructor
 public class JobAdvertisementController {
 
     private final JobAdvertisementService jobAdvertisementService;
-    @PostMapping("/add")
+    @PostMapping
     public ResponseEntity<?> addJobAdvertisement(@Valid @RequestBody JobAdvertisementDto jobAdvertisementDto)
     {
        return ResponseEntity.ok(this.jobAdvertisementService.addJobAdvertisement(jobAdvertisementDto));
     }
 
-    @GetMapping("/get")
+    @GetMapping
     public DataResult<List<JobAdvertisementDto>> getAllJobAdvertisement()
     {
         return this.jobAdvertisementService.getAllJobAdvertisement();
     }
-    @GetMapping("/get_by_employer_name")
+    @GetMapping("/get-job-advertisements")
     DataResult<List<JobAdvertisementDto>> getAllJobAdvertisementByEmployerName(@RequestParam String employerName)
     {
         return this.jobAdvertisementService.getAllJobAdvertisementByEmployerName(employerName);
     }
-    @GetMapping("/get_by_deadline")
+    @GetMapping("/get-job-advertisements-order-by-deadline")
     public DataResult<List<JobAdvertisementDto>> getAllJobAdvertisementOrderByDeadlineAsc()
     {
         return this.jobAdvertisementService.getAllJobAdvertisementOrderByDeadlineAsc();
     }
-    @PutMapping("/change_to_unactive")
-    public Result changeToUnActive(@RequestParam int id)
+    @PatchMapping("/change-to-unactive/{id}")
+    public Result changeToUnActive(@PathVariable int id)
     {
         return this.jobAdvertisementService.changeToUnActive(id);
     }
 
-    @PutMapping("/change_to_active")
-    public Result changeToActive(@RequestParam int id)
+    @PatchMapping("/change-to-active/{id}")
+    public Result changeToActive(@PathVariable int id)
     {
         return this.jobAdvertisementService.changeToActive(id);
     }

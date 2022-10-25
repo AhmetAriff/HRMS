@@ -18,7 +18,6 @@ public class CvServiceImpl implements CvService {
     private final SchoolService schoolService;
     private final ProgrammingLanguageService programmingLanguageService;
     private final JobExperienceService jobExperienceService;
-
     private final ForeignLanguageService foreignLanguageService;
 
     @Override
@@ -33,18 +32,6 @@ public class CvServiceImpl implements CvService {
         cv.setImage(image);
 
         cv.setCoverLetter(cvDto.getCoverLetter());
-
-        Schools schools = this.schoolService.addSchool(cvDto.getSchoolDto());
-        schools.setCv(cv);
-
-        ProgrammingLanguage programmingLanguage = this.programmingLanguageService.addProgrammingLanguage(cvDto.getProgrammingLanguageDto());
-        programmingLanguage.setCv(cv);
-        JobExperience jobExperience = this.jobExperienceService.addJobExperience(cvDto.getJobExperienceDto());
-        jobExperience.setCv(cv);
-
-        ForeignLanguage foreignLanguage = this.foreignLanguageService.addForeignLanguage(cvDto.getForeignLanguageDto());
-        foreignLanguage.setCv(cv);
-
 
         this.cvRepository.save(cv);
         return new SuccessResult("cv olusturuldu");

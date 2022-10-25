@@ -7,6 +7,10 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 @Entity
 @Table(name="Schools")
 @Getter
@@ -29,9 +33,8 @@ public class Schools implements Serializable {
     @Column(name = "end_of_school",length = 100)
     private int endOfSchool;
 
-    @ManyToOne
-    @JoinColumn(name = "cv_id")
-    private Cv cv;
+    @ManyToMany(mappedBy = "addedSchools")
+    private Set<Cv> cv  ;
 
 
 }

@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ForeignLanguageRepository extends JpaRepository<ForeignLanguage,Integer> {
+
+    ForeignLanguage getForeignLanguageByForeignLanguageId (int id);
 }

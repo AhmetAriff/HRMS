@@ -50,7 +50,7 @@ public class JobAdvertisement implements Serializable {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     @Column(name = "release_date")
     private Date releaseDate ;
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "city_id")
     private City city;
 
