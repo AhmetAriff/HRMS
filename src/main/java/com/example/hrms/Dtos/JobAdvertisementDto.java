@@ -41,4 +41,8 @@ public class JobAdvertisementDto {
 
 
     private String cityName;
+
+
+
+
 }

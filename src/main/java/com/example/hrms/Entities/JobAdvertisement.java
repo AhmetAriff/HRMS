@@ -59,8 +59,4 @@ public class JobAdvertisement implements Serializable {
 
 
 
-
-
-
-
 }

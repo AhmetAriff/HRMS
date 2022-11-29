@@ -21,13 +21,14 @@ public class SchoolServiceImpl implements SchoolService {
     private final CvRepository cvRepository;
 
     @Override
-    public Schools addSchoolToDb(SchoolDto schoolDto) {
+    public Result addSchool(SchoolDto schoolDto) {
         Schools schools = new Schools();
         schools.setSchoolName(schoolDto.getSchoolName());
         schools.setStartOfSchool(schoolDto.getStartOfSchool());
         schools.setEndOfSchool(schoolDto.getEndOfSchool());
-        return schoolsRepository.save(schools);
-
+        schools.setCv(cvRepository.findCvByCvId(schoolDto.getCvId()));
+        this.schoolsRepository.save(schools);
+        return new SuccessResult("school added to cv");
 
     }
 

@@ -33,8 +33,9 @@ public class Schools implements Serializable {
     @Column(name = "end_of_school",length = 100)
     private int endOfSchool;
 
-    @ManyToMany(mappedBy = "addedSchools")
-    private Set<Cv> cv  ;
+    @ManyToOne
+    @JoinColumn(name="cv_id")
+    private Cv cv;
 
 
 }

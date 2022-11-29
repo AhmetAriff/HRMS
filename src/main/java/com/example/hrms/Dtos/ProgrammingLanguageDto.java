@@ -15,5 +15,5 @@ public class ProgrammingLanguageDto {
     private String programmingLanguageName;
 
 
-    private CvDto cvDto;
+    private int cvId;
 }

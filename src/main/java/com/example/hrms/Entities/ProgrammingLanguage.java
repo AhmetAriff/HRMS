@@ -27,8 +27,9 @@ public class ProgrammingLanguage implements Serializable {
     @Column(name = "programming_language_name",length = 100)
     private String programmingLanguageName;
 
-    @ManyToMany(mappedBy = "programmingLanguage")
-    private Set<Cv> cv ;
+    @ManyToOne
+    @JoinColumn(name="cv_id")
+    private Cv cv;
 
 
 }

@@ -34,8 +34,9 @@ public class ForeignLanguage implements Serializable {
     @Column(name="language_level")
     private int languageLevel;
 
-    @ManyToMany(mappedBy = "foreignLanguage")
-    private Set<Cv> cv ;
+    @ManyToOne
+    @JoinColumn(name = "cv_id")
+    private Cv cv ;
 
 
 }

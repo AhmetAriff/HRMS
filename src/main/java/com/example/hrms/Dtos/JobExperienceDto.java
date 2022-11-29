@@ -19,5 +19,5 @@ public class JobExperienceDto {
     private int end_of_experience;
 
 
-    private int CvId;
+    private int cvId;
 }

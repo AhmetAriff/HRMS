@@ -2,8 +2,9 @@ package com.example.hrms.Service.Services;
 
 import com.example.hrms.Dtos.ForeignLanguageDto;
 import com.example.hrms.Entities.ForeignLanguage;
+import com.example.hrms.core.Utilities.Results.Result;
 
 public interface ForeignLanguageService {
 
-    ForeignLanguage addForeignLanguage(ForeignLanguageDto foreignLanguageDto);
+    Result addForeignLanguage(ForeignLanguageDto foreignLanguageDto);
 }

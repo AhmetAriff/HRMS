@@ -6,5 +6,5 @@ import com.example.hrms.core.Utilities.Results.Result;
 
 public interface ProgrammingLanguageService {
 
-    ProgrammingLanguage addProgrammingLanguage(ProgrammingLanguageDto programmingLanguageDto);
+    Result addProgrammingLanguage(ProgrammingLanguageDto programmingLanguageDto);
 }

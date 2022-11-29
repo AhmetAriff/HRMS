@@ -22,5 +22,5 @@ public class ForeignLanguageDto {
     private int languageLevel;
 
 
-    private CvDto cvDto;
+    private int cvId;
 }

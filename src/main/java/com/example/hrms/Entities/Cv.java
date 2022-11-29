@@ -29,24 +29,21 @@ public class Cv implements Serializable {
     @JoinColumn(name = "social_Media_Id")
     private SocialMedia socialMedia;
 
-    @ManyToMany
-    @JoinTable(name = "schools_cv",joinColumns = @JoinColumn(name = "cvId"), inverseJoinColumns = @JoinColumn(name = "schoolsId"))
-    private Set<Schools> addedSchools  ;
-
-    @OneToMany(mappedBy = "cv")
-    private Set<JobExperience>  jobExperience;
-
-    @ManyToMany(mappedBy = "cv")
-    @JoinTable(name = "foriegn_language_cv",joinColumns = @JoinColumn(name = "cvId"), inverseJoinColumns = @JoinColumn(name = "foreignLanguageId"))
-    private Set<ForeignLanguage>  foreignLanguage ;
-
     @OneToOne
     @JoinColumn(name="image_url")
     private Image image;
 
-    @ManyToMany(mappedBy = "cv")
-    @JoinTable(name = "programmingLanguages_cv",joinColumns = @JoinColumn(name = "cvId"), inverseJoinColumns = @JoinColumn(name = "programmingLanguageId"))
-    private Set<ProgrammingLanguage>  programmingLanguage ;
+    @OneToMany(mappedBy = "cv")
+    private List<Schools> Schools  ;
+
+    @OneToMany(mappedBy = "cv")
+    private List<JobExperience>  jobExperience;
+
+    @OneToMany(mappedBy = "cv")
+    private List<ForeignLanguage>  foreignLanguage ;
+
+    @OneToMany(mappedBy = "cv")
+    private List<ProgrammingLanguage>  programmingLanguage ;
 
     @Column(name="cover_letter",length = 300)
     private String CoverLetter;
